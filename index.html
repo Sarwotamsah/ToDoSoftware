@@ -53,7 +53,11 @@
     </div>
 
     <script>
-        let tasks = [];
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        function saveTasks() {
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
 
         function renderTasks() {
             const taskList = document.getElementById('taskList');
@@ -103,11 +107,13 @@
 
             tasks.push({ text: taskText, completed: false });
             taskInput.value = '';
+            saveTasks();
             renderTasks();
         }
 
         function toggleComplete(index) {
             tasks[index].completed = !tasks[index].completed;
+            saveTasks();
             renderTasks();
         }
 
@@ -115,6 +121,7 @@
             const newTask = prompt('Edit your task:', tasks[index].text);
             if (newTask !== null) {
                 tasks[index].text = newTask.trim();
+                saveTasks();
                 renderTasks();
             }
         }
@@ -127,6 +134,7 @@
 
         function deleteTask(index) {
             tasks.splice(index, 1);
+            saveTasks();
             renderTasks();
         }
 
@@ -138,6 +146,7 @@
 
         function deleteAllTasks() {
             tasks = [];
+            saveTasks();
             renderTasks();
         }
 
