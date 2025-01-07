@@ -53,9 +53,22 @@
         }
         .delete-all {
             position: absolute;
-            bottom: 10px;
-            left: 10px;
+            bottom: 20px;
+            left: 20px;
             width: auto;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 0.9em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .delete-all:hover {
+            background-color: #c82333;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
         }
         .task-input {
             display: flex;
@@ -68,6 +81,12 @@
             text-align: center;
             color: #6c757d;
             margin-top: 20px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #6c757d;
         }
     </style>
 </head>
@@ -89,8 +108,12 @@
 
         <div id="emptyMessage" class="empty-message" style="display: none;">Your task list is empty. Add a task to get started!</div>
 
-        <button class="btn btn-danger delete-all" onclick="confirmDeleteAll()">Delete All</button>
+        <button class="btn delete-all" onclick="confirmDeleteAll()">Delete All</button>
     </div>
+
+    <footer>
+        &copy; 2025 <a href="https://sarwotamsah.com.np" target="_blank">Sarwotam Amit</a>. All rights reserved.
+    </footer>
 
     <script>
         let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
