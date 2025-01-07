@@ -51,11 +51,12 @@
         .btn-sm {
             margin-left: 5px;
         }
+        .delete-all-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
         .delete-all {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            width: auto;
             background-color: #dc3545;
             color: white;
             border: none;
@@ -88,6 +89,12 @@
             font-size: 0.9em;
             color: #6c757d;
         }
+        @media (max-width: 768px) {
+            .delete-all {
+                width: 100%;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -108,7 +115,9 @@
 
         <div id="emptyMessage" class="empty-message" style="display: none;">Your task list is empty. Add a task to get started!</div>
 
-        <button class="btn delete-all" onclick="confirmDeleteAll()">Delete All</button>
+        <div class="delete-all-container">
+            <button class="btn delete-all" onclick="confirmDeleteAll()">Delete All</button>
+        </div>
     </div>
 
     <footer>
